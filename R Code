@@ -1,0 +1,122 @@
+setwd("C:/Users/Start/OneDrive/Desktop/stat")
+data <- read.csv(file="teen_poll.csv",head=TRUE, stringsAsFactors=FALSE, sep=",")
+
+#######################################BASIC###########################################################
+data[data$Question =="How often are you stressed",]$Question
+unique(data$Region)
+
+data[data$Question =="What stresses you out the most",]$Question
+
+data[data$Question =="What are you most likely to do when stressed",]$Question
+
+data[data$Question =="What resources do you use to help",]$Question
+
+
+data$USRegion <-
+  ifelse((data$Region == "Connecticut") | (data$Region == "Maine") | (data$Region == "Massachusetts") | (data$Region == "New Hampshire") | 
+        (data$Region == "Rhode Island") | (data$Region == "Vermont") | (data$Region == "Delaware") | (data$Region == "Maryland") | 
+        (data$Region == "New Jersey") | (data$Region == "New York") | (data$Region == "Pennsylvania") | (data$Region == "District of Columbia")
+        , "Northeast",
+  ifelse((data$Region == "Alabama") | (data$Region == "Arkansas") | (data$Region == "Florida") | (data$Region == "Georgia") | 
+        (data$Region == "Kentucky") | (data$Region == "Louisiana") | (data$Region == "Mississippi") | (data$Region == "North Carolina") | 
+        (data$Region == "South Carolina") | (data$Region == "Tennessee") | (data$Region == "Virginia") | (data$Region == "West Virginia")
+        ,"South",
+  ifelse((data$Region == "Illinois") | (data$Region == "Indiana") | (data$Region == "Iowa") | (data$Region == "Kansas") |
+        (data$Region == "Michigan") | (data$Region == "Minnesota") | (data$Region == "Missouri") | (data$Region == "Nebraska") |
+        (data$Region == "North Dakota") | (data$Region == "Ohio") | (data$Region == "South Dakota") | (data$Region == "Wisconsin"),
+        "Midwest",
+  ifelse((data$Region == "Arizona") | (data$Region == "New Mexico") | (data$Region == "Oklahoma") | (data$Region == "Texas") | 
+        (data$Region == "Alaska") | (data$Region == "Colorado") | (data$Region == "California") | (data$Region == "Hawaii") | 
+        (data$Region == "Idaho") | (data$Region == "Montana") | (data$Region == "Nevada") | (data$Region == "Oregon") | 
+        (data$Region == "Utah") | (data$Region == "Washington") | (data$Region == "Wyoming"),"West","" ))))
+write.table(data, "c:/Users/Start/OneDrive/Desktop/stat/teen_poll_region.txt", sep="\t")
+
+NE <- data[data$USRegion=="Northeast",]
+SO <- data[data$USRegion=="South",]
+MW <- data[data$USRegion=="Midwest",]
+WE <- data[data$USRegion=="West",]
+
+
+summary(data[data$Question =="What stresses you out the most",]$Event.Category)
+Q1 <- data[data$Question =="What stresses you out the most",]$Event.Category
+table(Q1)
+
+summary(NE[NE$Question =="What stresses you out the most",]$Event.Category)
+Q1_NE <- NE[NE$Question =="What stresses you out the most",]$Event.Category
+table(Q1_NE)
+
+summary(SO[SO$Question =="What stresses you out the most",]$Event.Category)
+Q1_SO <- SO[SO$Question =="What stresses you out the most",]$Event.Category
+table(Q1_SO)
+
+summary(MW[MW$Question =="What stresses you out the most",]$Event.Category)
+Q1_MW <- MW[MW$Question =="What stresses you out the most",]$Event.Category
+table(Q1_MW)
+
+summary(WE[WE$Question =="What stresses you out the most",]$Event.Category)
+Q1_WE <- WE[WE$Question =="What stresses you out the most",]$Event.Category
+table(Q1_WE)
+
+#Q2
+summary(data[data$Question =="How often are you stressed",]$Event.Category)
+Q2 <- data[data$Question =="How often are you stressed",]$Event.Category
+table(Q2)
+
+summary(NE[NE$Question =="How often are you stressed",]$Event.Category)
+Q2_NE <- NE[NE$Question =="How often are you stressed",]$Event.Category
+table(Q2_NE)
+
+summary(SO[SO$Question =="How often are you stressed",]$Event.Category)
+Q2_SO <- SO[SO$Question =="How often are you stressed",]$Event.Category
+table(Q2_SO)
+
+summary(MW[MW$Question =="How often are you stressed",]$Event.Category)
+Q2_MW <- MW[MW$Question =="How often are you stressed",]$Event.Category
+table(Q2_MW)
+
+summary(WE[WE$Question =="How often are you stressed",]$Event.Category)
+Q2_WE <- WE[WE$Question =="How often are you stressed",]$Event.Category
+table(Q2_WE)
+
+#Q3
+summary(data[data$Question =="What are you most likely to do when you're stressed",]$Event.Category)
+Q3 <- data[data$Question =="What are you most likely to do when you're stressed",]$Event.Category
+table(Q3)
+
+summary(NE[NE$Question =="What are you most likely to do when you're stressed",]$Event.Category)
+Q3_NE <- NE[NE$Question =="What are you most likely to do when you're stressed",]$Event.Category
+table(Q3_NE)
+
+summary(SO[SO$Question =="What are you most likely to do when you're stressed",]$Event.Category)
+Q3_SO <- SO[SO$Question =="What are you most likely to do when you're stressed",]$Event.Category
+table(Q3_SO)
+
+summary(MW[MW$Question =="What are you most likely to do when you're stressed",]$Event.Category)
+Q3_MW <- MW[MW$Question =="What are you most likely to do when you're stressed",]$Event.Category
+table(Q3_MW)
+
+summary(WE[WE$Question =="What are you most likely to do when you're stressed",]$Event.Category)
+Q3_WE <- WE[WE$Question =="What are you most likely to do when you're stressed",]$Event.Category
+table(Q3_WE)
+
+
+#Q4
+summary(data[data$Question =="What resources do you use to help",]$Event.Category)
+Q4 <- data[data$Question =="What resources do you use to help",]$Event.Category
+table(Q4)
+
+summary(NE[NE$Question =="What resources do you use to help",]$Event.Category)
+Q4_NE <- NE[NE$Question =="What resources do you use to help",]$Event.Category
+table(Q4_NE)
+
+summary(SO[SO$Question =="What resources do you use to help",]$Event.Category)
+Q4_SO <- SO[SO$Question =="What resources do you use to help",]$Event.Category
+table(Q4_SO)
+
+summary(MW[MW$Question =="What resources do you use to help",]$Event.Category)
+Q4_MW <- MW[MW$Question =="What resources do you use to help",]$Event.Category
+table(Q4_MW)
+
+summary(WE[WE$Question =="What resources do you use to help",]$Event.Category)
+Q4_WE <- WE[WE$Question =="What resources do you use to help",]$Event.Category
+table(Q4_WE)
